@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JNJM ARCHIVE · JENO &amp; JAEMIN</title>
+  
+  <!-- Google Fonts: Fredoka & Kanit / Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Kanit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            chunky: ['Fredoka', 'sans-serif'],
+            thai: ['Kanit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'Kanit', 'sans-serif'],
+          },
+          boxShadow: {
+            'sky-card': '0 16px 36px -10px rgba(50, 115, 180, 0.28), 0 4px 12px -2px rgba(50, 115, 180, 0.12)',
+            'white-card': '0 8px 20px -4px rgba(27, 59, 95, 0.08), 0 2px 6px -1px rgba(27, 59, 95, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 3D Chunky Pop Title */
+    .chunky-title {
+      color: #ffffff;
+      text-shadow: 
+        0 2px 0 #8abce8,
+        0 4px 0 #5f9cd2,
+        0 7px 15px rgba(27, 59, 95, 0.35);
+      letter-spacing: -0.01em;
+    }
+
+    .sub-emboss {
+      letter-spacing: 0.24em;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+    }
+
+    /* Floating Clouds Animation */
+    @keyframes floatCloud {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-6px) scale(1.02); }
+    }
+    .animate-cloud-slow {
+      animation: floatCloud 6s ease-in-out infinite;
+    }
+    .animate-cloud-fast {
+      animation: floatCloud 4.5s ease-in-out infinite reverse;
+    }
+
+    /* Drive Car Animation */
+    @keyframes driveCar {
+      0% {
+        transform: translateX(-160px);
+      }
+      100% {
+        transform: translateX(calc(100vw + 160px));
+      }
+    }
+
+    /* Car Suspension / Bounce */
+    @keyframes carBounce {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-1.5px); }
+    }
+
+    /* Wheel Spin */
+    @keyframes spinWheel {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .car-container {
+      position: absolute;
+      bottom: 7px;
+      left: 0;
+      width: 78px;
+      height: 40px;
+      animation: driveCar 8.5s linear infinite;
+      z-index: 20;
+    }
+
+    .car-body {
+      animation: carBounce 0.38s ease-in-out infinite alternate;
+    }
+
+    .wheel-spin {
+      animation: spinWheel 0.45s linear infinite;
+      transform-origin: center;
+    }
+
+    /* White Road Dashed Divider */
+    .road-dash-line {
+      background-image: repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.95) 0px,
+        rgba(255, 255, 255, 0.95) 20px,
+        transparent 20px,
+        transparent 38px
+      );
+      background-repeat: repeat-x;
+      background-size: 38px 4px;
+    }
+
+    /* Floating Heart Reaction */
+    @keyframes floatHeart {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-38px) scale(1.35); }
+    }
+    .floating-heart {
+      position: absolute;
+      animation: floatHeart 0.75s ease-out forwards;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    /* Smooth Car Color Transition */
+    .car-paint {
+      transition: fill 0.4s ease, filter 0.4s ease;
+    }
+
+    /* Interactive button active pulse */
+    .btn-selected {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -4px rgba(27, 59, 95, 0.22);
+    }
+  </style>
+</head>
+<body class="bg-[#dcf0fc] text-[#1b3b5f] font-sans min-h-screen py-6 px-3 sm:px-6 antialiased selection:bg-[#9cd3fa] selection:text-[#122e4d]">
+
+  <div class="max-w-4xl mx-auto space-y-6">
+
+    <!-- ==============================================
+         1. TOP HERO CARD (Black Road + Interactive Car Color)
+         ============================================== -->
+    <header class="relative bg-gradient-to-b from-[#b7dcfa] via-[#98cbf6] to-[#80bcf2] rounded-[32px] pt-7 px-6 sm:px-9 pb-0 shadow-sky-card border-[3px] border-white/95 overflow-hidden text-center">
+      
+      <!-- Decorative Clouds -->
+      <div class="absolute top-4 left-6 text-white/90 animate-cloud-slow pointer-events-none">
+        <svg class="w-16 h-10 sm:w-20 sm:h-12 fill-current drop-shadow-sm" viewBox="0 0 64 40">
+          <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
+        </svg>
+      </div>
+      <div class="absolute top-6 right-8 text-white/85 animate-cloud-fast hidden sm:block pointer-events-none">
+        <svg class="w-22 h-13 sm:w-24 sm:h-14 fill-current drop-shadow-sm" viewBox="0 0 64 40">
+          <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
+        </svg>
+      </div>
+
+      <!-- Small Pill Badge -->
+      <div class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-[#1b3b5f] border border-white shadow-sm mb-3">
+        <span>⚡</span>
+        <span>JENO &amp; JAEMIN ARCHIVE</span>
+      </div>
+
+      <!-- Bold 3D Title -->
+      <h1 class="font-chunky text-5xl sm:text-7xl font-extrabold chunky-title tracking-tight leading-none mb-1">
+        JENO &amp; JAEMIN
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="font-chunky text-xs sm:text-sm font-extrabold tracking-widest text-[#1c4068] sub-emboss uppercase mb-6">
+        J N J M · A R C H I V E
+      </p>
+
+      <!-- Interactive Switcher Cards for Jeno & Jaemin (Car Color Gimmick Only) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto mb-4">
+        
+        <!-- JENO Card Button (Changes car to Blue) -->
+        <button 
+          id="jenoCardBtn" 
+          onclick="changeCarColor('jeno')" 
+          class="group bg-white/95 hover:bg-white rounded-2xl p-3.5 border-2 border-white shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
+        >
+          <div class="flex items-center justify-center gap-2">
+            <span class="text-2xl group-hover:scale-110 transition-transform">🐶</span>
+            <span class="font-chunky text-xl font-black text-[#1b3b5f] group-hover:text-blue-600 transition-colors">JENO</span>
+          </div>
+          <p class="text-[11px] font-bold text-[#3e6a97] tracking-wider uppercase font-thai">LEE JENO · คลิกเปลี่ยนรถสีฟ้า 🚙</p>
+        </button>
+
+        <!-- JAEMIN Card Button (Changes car to Pink) -->
+        <button 
+          id="jaeminCardBtn" 
+          onclick="changeCarColor('jaemin')" 
+          class="group bg-white/95 hover:bg-white rounded-2xl p-3.5 border-2 border-white shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
+        >
+          <div class="flex items-center justify-center gap-2">
+            <span class="text-2xl group-hover:scale-110 transition-transform">🐰</span>
+            <span class="font-chunky text-xl font-black text-[#1b3b5f] group-hover:text-pink-500 transition-colors">JAEMIN</span>
+          </div>
+          <p class="text-[11px] font-bold text-[#3e6a97] tracking-wider uppercase font-thai">NA JAEMIN · คลิกเปลี่ยนรถสีชมพู 🚗</p>
+        </button>
+
+      </div>
+
+      <!-- NCT JNJM Button (Changes Car to Red) -->
+      <div class="mb-6">
+        <button 
+          onclick="changeCarColor('red')" 
+          class="group inline-flex items-center gap-2 bg-[#1b3b5f] hover:bg-[#122b46] text-white px-5 py-2 rounded-full shadow-md border border-white/40 transition-all active:scale-95 hover:shadow-lg cursor-pointer"
+        >
+          <span id="carColorIndicatorDot" class="w-2.5 h-2.5 rounded-full bg-red-500 transition-colors"></span>
+          <span class="font-chunky font-bold text-xs sm:text-sm tracking-widest text-[#9cd3fa] group-hover:text-white transition-colors">⚡ NCT JNJM</span>
+          <span class="text-[11px] text-white/70 font-thai">(คลิกเปลี่ยนรถสีแดง 🏎️)</span>
+        </button>
+      </div>
+
+      <!-- ==============================================
+           DARK ASPHALT ROAD WITH INTERACTIVE COLOR CAR
+           ============================================== -->
+      <div class="relative -mx-6 sm:-mx-9 bg-[#23272d] border-t-2 border-[#16191c] h-14 overflow-hidden flex items-center shadow-inner">
+        
+        <!-- White Dashed Lane Line -->
+        <div class="absolute inset-x-0 h-[4px] road-dash-line top-1/2 -translate-y-1/2 z-0 opacity-90"></div>
+
+        <!-- Animated Driving Car -->
+        <div class="car-container">
+          <div class="car-body relative w-full h-full">
+            <svg viewBox="0 0 100 52" class="w-full h-full drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]">
+              
+              <!-- Dynamic Paint Body (Switches Blue / Pink / Red) -->
+              <path id="carBodyPaint" class="car-paint" d="M12 24 L28 10 L68 10 L86 22 L94 25 C97 27 97 32 94 34 L88 36 L10 36 C6 36 4 32 6 28 Z" fill="#ef4444"/>
+              
+              <!-- Subtle Roof Reflection Highlight -->
+              <path id="carRoofPaint" class="car-paint" d="M30 12 L66 12 L78 20 L24 20 Z" fill="#f87171"/>
+
+              <!-- Tinted Windows -->
+              <path d="M30 13 L48 13 L48 21 L24 21 Z" fill="#eff6ff" opacity="0.9"/>
+              <path d="M52 13 L65 13 L75 21 L52 21 Z" fill="#eff6ff" opacity="0.9"/>
+
+              <!-- Headlight (Glow Effect) & Taillight -->
+              <path d="M92 27 L96 28 L92 31 Z" fill="#fde047"/>
+              <path d="M6 27 L8 27 L7 31 L5 30 Z" fill="#ef4444"/>
+
+              <!-- Door Cutout Line -->
+              <line x1="50" y1="20" x2="50" y2="34" stroke="#111827" stroke-width="1.3" opacity="0.65"/>
+
+              <!-- Wheels (Spinning Chrome Wheels on Dark Tires) -->
+              <g class="wheel-spin" style="transform-origin: 26px 37px;">
+                <circle cx="26" cy="37" r="7.5" fill="#111317"/>
+                <circle cx="26" cy="37" r="4.2" fill="#cbd5e1"/>
+                <circle cx="26" cy="37" r="2" fill="#111317"/>
+                <line x1="26" y1="33" x2="26" y2="41" stroke="#475569" stroke-width="0.9"/>
+                <line x1="22" y1="37" x2="30" y2="37" stroke="#475569" stroke-width="0.9"/>
+              </g>
+
+              <g class="wheel-spin" style="transform-origin: 74px 37px;">
+                <circle cx="74" cy="37" r="7.5" fill="#111317"/>
+                <circle cx="74" cy="37" r="4.2" fill="#cbd5e1"/>
+                <circle cx="74" cy="37" r="2" fill="#111317"/>
+                <line x1="74" y1="33" x2="74" y2="41" stroke="#475569" stroke-width="0.9"/>
+                <line x1="70" y1="37" x2="78" y2="37" stroke="#475569" stroke-width="0.9"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==============================================
+         2. CATEGORY FILTER TABS
+         ============================================== -->
+    <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+      <button onclick="selectCategory('all')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white" data-cat="all">
+        ✨ ทั้งหมด (All)
+      </button>
+      <button onclick="selectCategory('duo')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="duo">
+        ⚡ งานคู่ &amp; โมเมนต์ (JNJM Duo)
+      </button>
+      <button onclick="selectCategory('jeno')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jeno">
+        🐶 งานเดี่ยว JENO
+      </button>
+      <button onclick="selectCategory('jaemin')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jaemin">
+        🐰 งานเดี่ยว JAEMIN
+      </button>
+    </div>
+
+    <!-- ==============================================
+         2. SECOND CARD (HIGHLIGHTS & ARCHIVES)
+         - Same Sky-Blue gradient as Top Card
+         - NO DOT GRID / NO BALLS
+         ============================================== -->
+    <main class="relative bg-gradient-to-b from-[#b7dcfa] via-[#98cbf6] to-[#80bcf2] rounded-[32px] p-6 sm:p-9 shadow-sky-card border-[3px] border-white/95 overflow-hidden">
+      
+      <!-- Matching Soft Floating Clouds -->
+      <div class="absolute top-4 left-6 text-white/90 animate-cloud-slow pointer-events-none">
+        <svg class="w-16 h-10 sm:w-20 sm:h-12 fill-current drop-shadow-sm" viewBox="0 0 64 40">
+          <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
+        </svg>
+      </div>
+      <div class="absolute top-6 right-8 text-white/85 animate-cloud-fast hidden sm:block pointer-events-none">
+        <svg class="w-22 h-13 sm:w-24 sm:h-14 fill-current drop-shadow-sm" viewBox="0 0 64 40">
+          <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
+        </svg>
+      </div>
+
+      <!-- Header & Screen Stage Pill -->
+      <div class="text-center mb-6 relative z-10">
+        <div class="inline-flex items-center gap-2 text-xs font-chunky font-bold text-[#173a62] tracking-widest uppercase mb-1">
+          <span>✨</span>
+          <span>JNJM HIGHLIGHTS &amp; PROJECTS</span>
+          <span>✨</span>
+        </div>
+        <p class="text-xs text-[#1c4470] font-thai font-medium">รวมผลงานเดี่ยว แฟชั่น งานถ่ายภาพ และผลงานคู่ของเจโน่กับแจมิน</p>
+        
+        <!-- Screen Bar -->
+        <div class="mt-4 max-w-md mx-auto h-7 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm border border-white">
+          <span class="text-[10px] font-extrabold tracking-[0.35em] text-[#1b3b5f]">S C R E E N &nbsp; S T A G E</span>
+        </div>
+      </div>
+
+      <!-- Independent Filter Tabs for Works -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-6 relative z-10">
+        <button onclick="selectCategory('all')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white" data-cat="all">
+          ✨ ทั้งหมด (All)
+        </button>
+        <button onclick="selectCategory('duo')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="duo">
+          ⚡ งานคู่ &amp; โมเมนต์ (JNJM Duo)
+        </button>
+        <button onclick="selectCategory('jeno')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jeno">
+          🐶 งานเดี่ยว JENO
+        </button>
+        <button onclick="selectCategory('jaemin')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jaemin">
+          🐰 งานเดี่ยว JAEMIN
+        </button>
+      </div>
+
+      <!-- Works Cards Grid -->
+      <div id="worksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10 mb-6">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Status Legend -->
+      <div class="flex flex-wrap items-center justify-between text-xs text-[#1f4773] gap-3 relative z-10 font-thai px-1">
+        <div class="flex items-center gap-4 font-semibold">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> เจโน่ (JENO)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span> แจมิน (JAEMIN)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#1b3b5f]"></span> งานคู่ (JNJM Duo)</span>
+        </div>
+        <div class="font-mono text-[11px] font-bold tracking-wider text-[#1d456f]">
+          LIVE · SYNCED ARCHIVE
+        </div>
+      </div>
+    </main>
+
+    <!-- ==============================================
+         4. OFFICIAL ACCOUNTS & SEARCH
+         ============================================== -->
+    <section class="bg-gradient-to-b from-[#b8dcf9] to-[#a2d0f6] rounded-[32px] p-5 sm:p-7 shadow-sky-card border-[3px] border-white/95">
+      
+      <!-- Search Bar -->
+      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-6 border-b border-white/50">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl p-2.5 bg-white text-[#1b3b5f] rounded-2xl shadow-sm border border-white">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <div>
+            <h2 class="font-chunky text-lg font-bold text-[#1b3b5f]">ค้นหาผลงานของเจโน่ &amp; แจมิน</h2>
+            <p class="text-xs text-[#335d88] font-thai">ค้นหาตามชื่อแบรนด์, งานถ่ายภาพ, ยูนิต หรือนิตยสาร</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 w-full md:w-auto">
+          <div class="relative flex-1 md:w-64">
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="เช่น Ferragamo, Narcissism..." 
+              class="w-full bg-white border-2 border-white text-sm rounded-xl px-4 py-2.5 text-[#1b3b5f] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1b3b5f]/40 transition-all shadow-sm"
+              oninput="handleSearch(this.value)"
+            >
+          </div>
+          <button 
+            onclick="clearSearch()"
+            class="px-5 py-2.5 bg-[#1b3b5f] hover:bg-[#122b46] text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all active:translate-y-0.5 whitespace-nowrap"
+          >
+            รีเซ็ต
+          </button>
+        </div>
+      </div>
+
+      <!-- Social Grid (Focused purely on JENO & JAEMIN) -->
+      <div class="pt-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-chunky text-base font-extrabold text-[#1b3b5f] flex items-center gap-2">
+            <span>📢</span> JENO &amp; JAEMIN OFFICIAL ACCOUNTS
+          </h3>
+          <span class="text-xs font-bold text-[#1b3b5f] bg-white/90 px-3 py-1 rounded-full shadow-sm border border-white">
+            Official Instagram
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <!-- Jeno Official Instagram -->
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/95 hover:bg-white border-2 border-white shadow-white-card transition-all group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-sm">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-black text-[#1b3b5f] group-hover:text-blue-600 transition-colors">LEE JENO (เจโน่)</p>
+                  <span class="text-blue-500 text-xs"><i class="fa-solid fa-circle-check"></i></span>
+                </div>
+                <p class="text-xs text-[#52779f] font-mono font-semibold">@leejen_o_423</p>
+                <p class="text-[11px] text-slate-400 font-thai">Ferragamo Global Ambassador</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="copyToClipboard('@leejen_o_423', 'คัดลอก IG เจโน่แล้ว!')" class="p-2.5 text-slate-400 hover:text-[#1b3b5f] text-xs rounded-xl hover:bg-slate-100 transition-colors" title="Copy username">
+                <i class="fa-regular fa-copy text-sm"></i>
+              </button>
+              <a href="https://www.instagram.com/leejen_o_423/" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-xl text-xs transition-colors" title="Open Instagram">
+                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Jaemin Official Instagram -->
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/95 hover:bg-white border-2 border-white shadow-white-card transition-all group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-400 to-pink-500 flex items-center justify-center text-white text-xl shadow-sm">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-black text-[#1b3b5f] group-hover:text-pink-500 transition-colors">NA JAEMIN (แจมิน)</p>
+                  <span class="text-pink-500 text-xs"><i class="fa-solid fa-circle-check"></i></span>
+                </div>
+                <p class="text-xs text-[#52779f] font-mono font-semibold">@na.jaemin0813</p>
+                <p class="text-[11px] text-slate-400 font-thai">Photographer &amp; Artist</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="copyToClipboard('@na.jaemin0813', 'คัดลอก IG แจมินแล้ว!')" class="p-2.5 text-slate-400 hover:text-[#1b3b5f] text-xs rounded-xl hover:bg-slate-100 transition-colors" title="Copy username">
+                <i class="fa-regular fa-copy text-sm"></i>
+              </button>
+              <a href="https://www.instagram.com/na.jaemin0813/" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-pink-50 hover:bg-pink-100 text-pink-600 rounded-xl text-xs transition-colors" title="Open Instagram">
+                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="text-[11px] text-[#2c537d] font-semibold mt-4 text-center font-thai">
+          💡 แตะไอคอน <i class="fa-regular fa-copy"></i> เพื่อคัดลอกแอคเคาท์ หรือแตะ <i class="fa-solid fa-arrow-up-right-from-square"></i> เพื่อไปยังหน้าโปรไฟล์จริง
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 text-xs text-[#3d6896] font-thai font-medium">
+      JENO &amp; JAEMIN (JNJM) ARCHIVE · Made with Love
+    </footer>
+  </div>
+
+  <!-- ==============================================
+       MODAL: WORK DETAILS POPUP
+       ============================================== -->
+  <div id="detailModal" class="fixed inset-0 bg-[#16304d]/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[30px] max-w-lg w-full overflow-hidden shadow-2xl border-4 border-white">
+      <div id="modalHeader" class="relative p-6 bg-gradient-to-br from-[#98cbf6] via-[#81bef3] to-[#6bb0ed] text-[#1b3b5f]">
+        <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-[#1b3b5f] flex items-center justify-center transition-all shadow-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <span id="modalBadge" class="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white text-[#1b3b5f] shadow-sm mb-2">CATEGORY</span>
+        <h3 id="modalTitle" class="font-chunky text-2xl sm:text-3xl font-black text-white drop-shadow-sm">Title</h3>
+        <p id="modalSubtitle" class="text-xs text-[#16385e] font-bold">Subtitle</p>
+      </div>
+      <div class="p-6 space-y-4">
+        <div>
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">เกี่ยวกับผลงาน / ไฮไลต์</h4>
+          <p id="modalDescription" class="text-sm text-[#27486f] leading-relaxed font-thai">Description</p>
+        </div>
+        <div class="bg-[#f0f7fd] p-4 rounded-2xl border border-[#d2e8fb] space-y-2">
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-500 font-thai">ปี / ช่วงเวลาเปิดตัว:</span>
+            <span id="modalYear" class="font-bold text-[#1b3b5f]">2024</span>
+          </div>
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-500 font-thai">ศิลปิน:</span>
+            <span id="modalMembers" class="font-bold text-blue-700">JENO &amp; JAEMIN</span>
+          </div>
+        </div>
+        <div class="flex gap-2 pt-2">
+          <a id="modalActionBtn" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 bg-[#1b3b5f] hover:bg-[#122b46] text-white rounded-xl text-center text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> ไปที่ลิงก์ผลงานทางการ
+          </a>
+          <button onclick="closeModal()" class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-[#1b3b5f] rounded-xl text-xs font-bold transition-all">
+            ปิด
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-[#1b3b5f] text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs font-bold transition-all duration-300 translate-y-20 opacity-0 pointer-events-none z-50 border-2 border-white/80">
+    <span class="text-base text-[#a6e22e]"><i class="fa-solid fa-circle-check"></i></span>
+    <span id="toastMsg">แจ้งเตือนสำเร็จ</span>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script>
+    // Purely JENO, JAEMIN & JNJM DUO Works (Group Works Removed)
+    const worksData = [
+      // 1. DUO WORKS (งานคู่)
+      {
+        id: 1,
+        title: "JNJM Duo Moments & Chemistry",
+        artistCategory: "duo",
+        artistLabel: "JENO & JAEMIN (งานคู่)",
+        type: "Duo Special",
+        tag: "Soulmates",
+        badgeBg: "bg-[#1b3b5f]",
+        year: "2016 - ปัจจุบัน",
+        highlight: "มิตรภาพที่เติบโตมาด้วยกันตั้งแต่เข้าตึก SM ในวันเดียวกัน",
+        description: "คู่หู 'เจโน่แจมิน' (JNJM) เพื่อนร่วมชั้นเรียนและเพื่อนร่วมวงที่เข้า SM พร้อมกันในวันเดียวกัน สร้างโมเมนต์และสเตจคู่ในตำนานมากมาย",
+        url: "https://www.youtube.com/results?search_query=JENO+JAEMIN+moments",
+        likes: 1420,
+        ribbon: "ICONIC DUO"
+      },
+      {
+        id: 2,
+        title: "JNJM Unit Concept Project",
+        artistCategory: "duo",
+        artistLabel: "JENO & JAEMIN (งานคู่)",
+        type: "Special Unit",
+        tag: "Unit Stage",
+        badgeBg: "bg-[#1b3b5f]",
+        year: "2024",
+        highlight: "โปรเจกต์คู่ดูโอ้ที่แฟนคลับรอคอย เคมีที่ลงตัวระหว่างท่อนแร็ปและเพอร์ฟอร์แมนซ์",
+        description: "สเตจและโปรเจกต์คู่ที่ผสมผสานความเท่ดุดันของเจโน่เข้ากับเสน่ห์อันน่าหลงใหลของแจมิน สะท้อนความเข้าใจในดนตรีและการเต้นที่ซ้อมด้วยกันมานานกว่า 10 ปี",
+        url: "https://www.youtube.com/results?search_query=JENO+JAEMIN+stage",
+        likes: 1250,
+        ribbon: "HIGHLIGHT"
+      },
+      {
+        id: 3,
+        title: "Duo Pictorial & Magazine Shoot",
+        artistCategory: "duo",
+        artistLabel: "JENO & JAEMIN (งานคู่)",
+        type: "Fashion Pictorial",
+        tag: "Visual Chemistry",
+        badgeBg: "bg-[#1b3b5f]",
+        year: "2023",
+        highlight: "การถ่ายแฟชั่นเซตคู่ที่ผสานวิชวลสองสไตล์อันทรงพลัง",
+        description: "ภาพถ่ายแฟชั่นเซตคู่ที่เผยเสน่ห์อันน่าประทับใจ การจัดวางคอนทราสต์ระหว่างความแข็งแกร่งของเจโน่และความนุ่มละมุนของแจมิน",
+        url: "https://www.instagram.com/",
+        likes: 980,
+        ribbon: "PICTORIAL"
+      },
+
+      // 2. JENO SOLO (งานเดี่ยว เจโน่)
+      {
+        id: 4,
+        title: "Ferragamo Global Brand Ambassador",
+        artistCategory: "jeno",
+        artistLabel: "JENO (งานเดี่ยว)",
+        type: "Fashion & Ambassador",
+        tag: "Global Ambassador",
+        badgeBg: "bg-blue-600",
+        year: "2023 - ปัจจุบัน",
+        highlight: "ศิลปินชายระดับโลกคนแรกที่ได้รับเลือกเป็น Global Ambassador ของ Ferragamo",
+        description: "เจโน่สร้างประวัติศาสตร์ในฐานะ Global Brand Ambassador ผู้ชายคนแรกของแบรนด์แฟชั่นระดับตำนานอย่าง Ferragamo ด้วยภาพลักษณ์ที่เรียบหรู คมคาย และมีเสน่ห์เฉพาะตัว",
+        url: "https://www.instagram.com/leejen_o_423/",
+        likes: 960,
+        ribbon: "AMBASSADOR"
+      },
+      {
+        id: 5,
+        title: "New York Fashion Week Runway",
+        artistCategory: "jeno",
+        artistLabel: "JENO (งานเดี่ยว)",
+        type: "Runway Opening Model",
+        tag: "Global Stage",
+        badgeBg: "bg-blue-600",
+        year: "2022",
+        highlight: "ศิลปินเคป็อปคนแรกที่เปิดรันเวย์นิวยอร์กแฟชั่นวีค (Peter Do)",
+        description: "เจโน่เปิดรันเวย์นิวยอร์กแฟชั่นวีคในฐานะนายแบบหลักของแบรนด์ Peter Do สร้างความฮือฮาไปทั่ววงการแฟชั่นระดับโลกด้วยการเดินแบบที่สง่างามและเปี่ยมพลัง",
+        url: "https://www.instagram.com/leejen_o_423/",
+        likes: 890,
+        ribbon: "NYFW MODEL"
+      },
+      {
+        id: 6,
+        title: "Vogue Korea & Harper's Bazaar Solo",
+        artistCategory: "jeno",
+        artistLabel: "JENO (งานเดี่ยว)",
+        type: "Solo Cover Magazine",
+        tag: "Editorial",
+        badgeBg: "bg-blue-600",
+        year: "2024",
+        highlight: "ขึ้นปกนิตยสารแฟชั่นชั้นนำ ถ่ายทอดภาพลักษณ์หนุ่มเท่สุดสมาร์ท",
+        description: "แฟชั่นเซตและบทสัมภาษณ์เดี่ยวที่สะท้อนทัศนคติการทำงาน ความมุ่งมั่น และเสน่ห์ของกัปตันทีมและแดนเซอร์ผู้ทรงพลัง",
+        url: "https://www.instagram.com/leejen_o_423/",
+        likes: 740,
+        ribbon: "COVER"
+      },
+
+      // 3. JAEMIN SOLO (งานเดี่ยว แจมิน)
+      {
+        id: 7,
+        title: "Narcissism Photo Exhibition",
+        artistCategory: "jaemin",
+        artistLabel: "JAEMIN (งานเดี่ยว)",
+        type: "Solo Photo Exhibition",
+        tag: "Photographer & Artist",
+        badgeBg: "bg-pink-500",
+        year: "2024",
+        highlight: "นิทรรศการภาพถ่ายเดี่ยวครั้งแรก 'NARCISSISM' โดยฝีมือลั่นชัตเตอร์ของแจมิน",
+        description: "นิทรรศการภาพถ่ายที่แจมินบันทึกมุมมองชีวิต เมมเบอร์ และธรรมชาติรอบตัวตลอด 7 ปี สะท้อนความหลงใหลในศิลปะและการถ่ายภาพอย่างแท้จริง",
+        url: "https://www.instagram.com/na.jaemin0813/",
+        likes: 1150,
+        ribbon: "SOLO EXHB"
+      },
+      {
+        id: 8,
+        title: "Harper's Bazaar Men & Marie Claire",
+        artistCategory: "jaemin",
+        artistLabel: "JAEMIN (งานเดี่ยว)",
+        type: "Solo Fashion Pictorial",
+        tag: "Fashion Muse",
+        badgeBg: "bg-pink-500",
+        year: "2023 - 2024",
+        highlight: "ถ่ายทอดความงดงามและเสน่ห์ของแฟชั่นร่วมสมัยผ่านการขึ้นปกนิตยสารดัง",
+        description: "ภาพลักษณ์ที่เต็มไปด้วยความมั่นใจ ทรงเสน่ห์ และรอยยิ้มหวานที่สะกดทุกสายตา พร้อมการร่วมงานกับลักชัวรีแบรนด์ระดับโลก",
+        url: "https://www.instagram.com/na.jaemin0813/",
+        likes: 930,
+        ribbon: "FASHION MUSE"
+      },
+      {
+        id: 9,
+        title: "The Way I Hate You (Leading Role)",
+        artistCategory: "jaemin",
+        artistLabel: "JAEMIN (งานเดี่ยว)",
+        type: "Web Drama Actor",
+        tag: "Best Actor Award",
+        badgeBg: "bg-pink-500",
+        year: "2019",
+        highlight: "รับบทนำชาย 'ฮันแดกัง' และคว้ารางวัลนักแสดงยอดเยี่ยม",
+        description: "แจมินได้รับบทนำในเว็บดราม่ายอดนิยมเรื่อง The Way I Hate You ถ่ายทอดตัวละครสุดอบอุ่นจนได้รับรางวัล Best Actor ในงาน Seoul Webfest 2020",
+        url: "https://www.youtube.com/results?search_query=Jaemin+The+Way+I+Hate+You",
+        likes: 870,
+        ribbon: "AWARD WINNER"
+      }
+    ];
+
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    // Function to change car color ONLY (Playful Gimmick - No impact on bottom content)
+    function changeCarColor(type) {
+      const carBody = document.getElementById('carBodyPaint');
+      const carRoof = document.getElementById('carRoofPaint');
+      const indicatorDot = document.getElementById('carColorIndicatorDot');
+
+      if (type === 'jeno') {
+        // Change Car to Sky Blue
+        carBody.setAttribute('fill', '#3b82f6');
+        carRoof.setAttribute('fill', '#60a5fa');
+        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-blue-500 transition-colors";
+        showToast("🚙 เปลี่ยนรถเป็นสีฟ้า (JENO) แล้ว!");
+      } else if (type === 'jaemin') {
+        // Change Car to Pastel Pink
+        carBody.setAttribute('fill', '#ec4899');
+        carRoof.setAttribute('fill', '#f472b6');
+        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-pink-500 transition-colors";
+        showToast("🚗 เปลี่ยนรถเป็นสีชมพู (JAEMIN) แล้ว!");
+      } else if (type === 'red') {
+        // Change Car to Cherry Red (NCT JNJM)
+        carBody.setAttribute('fill', '#ef4444');
+        carRoof.setAttribute('fill', '#f87171');
+        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-red-500 transition-colors";
+        showToast("🏎️ เปลี่ยนรถเป็นสีแดง (NCT JNJM) แล้ว!");
+      }
+    }
+
+    // Function to select category for works (Independent from the car at the top)
+    function selectCategory(category) {
+      currentFilter = category;
+
+      // Update Filter Pills
+      document.querySelectorAll('.filter-pill-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === category) {
+          btn.className = "filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white";
+        } else {
+          btn.className = "filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white";
+        }
+      });
+
+      renderWorks();
+    }
+
+    // Render cards
+    function renderWorks() {
+      const container = document.getElementById('worksGrid');
+      container.innerHTML = '';
+
+      const filtered = worksData.filter(item => {
+        const matchesCategory = currentFilter === 'all' || item.artistCategory === currentFilter;
+        const matchesSearch = searchQuery === '' || 
+          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.artistLabel.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.highlight.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.type.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-[#214975] bg-white/60 rounded-3xl backdrop-blur-sm border border-white">
+            <div class="text-4xl mb-2">🔍</div>
+            <p class="font-thai font-bold text-sm">ไม่พบผลงานที่ตรงกับคำค้นหา ลองค้นหาด้วยคำอื่นดูนะครับ</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "group relative bg-white/95 hover:bg-white rounded-[24px] p-4 sm:p-5 border-2 border-white shadow-white-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col justify-between overflow-hidden";
+        card.onclick = (e) => {
+          if (e.target.closest('.like-btn')) return;
+          openModal(item);
+        };
+
+        const ribbonHtml = item.ribbon ? `
+          <div class="absolute -right-10 top-5 bg-gradient-to-r from-[#d9483b] to-[#be3024] text-white font-chunky text-[10px] font-black px-10 py-0.5 rotate-45 shadow-sm tracking-wider">
+            ${item.ribbon}
+          </div>
+        ` : '';
+
+        card.innerHTML = `
+          ${ribbonHtml}
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2 pr-6">
+              <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full ${item.badgeBg} text-white shadow-sm tracking-wide">
+                ${item.type}
+              </span>
+              <span class="text-[11px] font-mono text-[#577b9f] font-bold">${item.year}</span>
+            </div>
+
+            <h4 class="font-chunky text-base sm:text-lg font-black text-[#1b3b5f] group-hover:text-blue-600 transition-colors mb-0.5 line-clamp-1">
+              ${item.title}
+            </h4>
+            <p class="text-xs font-bold ${item.artistCategory === 'jeno' ? 'text-blue-600' : item.artistCategory === 'jaemin' ? 'text-pink-500' : 'text-[#1b3b5f]'} font-thai mb-2">
+              ${item.artistLabel}
+            </p>
+            <p class="text-xs text-[#526f8d] font-thai line-clamp-2 leading-relaxed mb-4">
+              ${item.highlight}
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
+            <span class="text-[11px] text-[#295b91] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              ดูรายละเอียด <i class="fa-solid fa-chevron-right text-[9px]"></i>
+            </span>
+
+            <button onclick="likeWork(${item.id}, this, event)" class="like-btn relative flex items-center gap-1.5 text-xs font-bold text-rose-500 bg-rose-50 hover:bg-rose-100 px-3 py-1 rounded-xl transition-all active:scale-90 border border-rose-200">
+              <i class="fa-solid fa-heart"></i>
+              <span id="like-count-${item.id}">${item.likes}</span>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Search filter
+    function handleSearch(val) {
+      searchQuery = val.trim();
+      renderWorks();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      renderWorks();
+    }
+
+    // Heart Reactions
+    function likeWork(id, btnElement, event) {
+      event.stopPropagation();
+      const item = worksData.find(w => w.id === id);
+      if (item) {
+        item.likes += 1;
+        const countSpan = document.getElementById(`like-count-${id}`);
+        if (countSpan) countSpan.textContent = item.likes;
+
+        const heart = document.createElement('span');
+        heart.className = 'floating-heart fa-solid fa-heart text-rose-500 text-sm';
+        heart.style.left = `${btnElement.offsetWidth / 2 - 6}px`;
+        heart.style.top = `-10px`;
+        btnElement.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 750);
+      }
+    }
+
+    // Modal details
+    function openModal(item) {
+      document.getElementById('modalBadge').textContent = item.type;
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalSubtitle').textContent = item.artistLabel;
+      document.getElementById('modalDescription').textContent = item.description;
+      document.getElementById('modalYear').textContent = item.year;
+      document.getElementById('modalMembers').textContent = item.artistLabel;
+      document.getElementById('modalActionBtn').href = item.url;
+      
+      const modal = document.getElementById('detailModal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('detailModal').classList.add('hidden');
+    }
+
+    document.getElementById('detailModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Copy to clipboard
+    function copyToClipboard(text, message) {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast(message);
+      } catch (err) {
+        showToast('คัดลอก: ' + text);
+      }
+    }
+
+    // Toast message
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2400);
+    }
+
+    // Run on load
+    window.onload = function() {
+      renderWorks();
+    };
+  </script>
+</body>
+</html>
