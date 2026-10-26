@@ -167,10 +167,9 @@
         </svg>
       </div>
 
-      <!-- Small Badge -->
-      <div class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-[#20436d] border border-white shadow-sm mb-3">
-        <span class="text-amber-500">⚡</span>
-        <span class="tracking-wide">JENO &amp; JAEMIN ARCHIVE</span>
+      <!-- Small Badge: เอาอิโมจิออก -->
+      <div class="inline-flex items-center justify-center bg-white/90 backdrop-blur-md px-5 py-1.5 rounded-full text-xs font-bold text-[#20436d] border border-white shadow-sm mb-3">
+        <span class="tracking-widest">JENO &amp; JAEMIN ARCHIVE</span>
       </div>
 
       <!-- Bold 3D Title -->
@@ -178,51 +177,43 @@
         JENO &amp; JAEMIN
       </h1>
       
-      <!-- Subtitle -->
-      <p class="font-chunky text-xs sm:text-sm font-extrabold tracking-widest text-[#2c4768] sub-emboss uppercase mb-6">
-        J N J M · A R C H I V E
+      <!-- Subtitle: ขยับลงมานิดนึง + เปลี่ยนเป็น 23 April 2000 — 13 August 2000 -->
+      <p class="font-chunky text-xs sm:text-sm font-bold tracking-[0.22em] text-[#33537a] sub-emboss uppercase mt-2 mb-7">
+        23 April 2000 — 13 August 2000
       </p>
 
-      <!-- Interactive Switcher Cards for Jeno & Jaemin (Pastel Accent) -->
+      <!-- Interactive Switcher Cards for Jeno & Jaemin: มีแค่ชื่อ + อิโมจิ ตรงกลาง -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-lg mx-auto mb-4">
         
-        <!-- JENO Card Button (Pastel Blue) -->
+        <!-- JENO Card Button -->
         <button 
           id="jenoCardBtn" 
           onclick="changeCarColor('jeno')" 
-          class="group bg-white/90 hover:bg-white rounded-2xl p-4 border-2 border-white hover:border-sky-300 shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
+          class="group bg-white/95 hover:bg-white rounded-2xl py-4 px-6 border-2 border-white hover:border-sky-200 shadow-white-card transition-all text-center flex items-center justify-center gap-2.5 active:scale-95"
         >
-          <div class="flex items-center justify-center gap-2 mb-1">
-            <span class="text-2xl group-hover:scale-110 transition-transform">🐶</span>
-            <span class="font-chunky text-xl font-black text-[#1b3b5f] group-hover:text-sky-600 transition-colors">JENO</span>
-          </div>
-          <p class="text-[11px] font-bold text-[#446d97] tracking-wider uppercase font-thai">LEE JENO · คลิกเปลี่ยนรถสีฟ้า 🚙</p>
+          <span class="font-chunky text-xl sm:text-2xl font-black text-[#1b3b5f] group-hover:text-sky-500 transition-colors tracking-wide">JENO</span>
+          <span class="text-2xl group-hover:scale-125 transition-transform duration-200">🐶</span>
         </button>
 
-        <!-- JAEMIN Card Button (Pastel Pink) -->
+        <!-- JAEMIN Card Button -->
         <button 
           id="jaeminCardBtn" 
           onclick="changeCarColor('jaemin')" 
-          class="group bg-white/90 hover:bg-white rounded-2xl p-4 border-2 border-white hover:border-pink-300 shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
+          class="group bg-white/95 hover:bg-white rounded-2xl py-4 px-6 border-2 border-white hover:border-pink-200 shadow-white-card transition-all text-center flex items-center justify-center gap-2.5 active:scale-95"
         >
-          <div class="flex items-center justify-center gap-2 mb-1">
-            <span class="text-2xl group-hover:scale-110 transition-transform">🐰</span>
-            <span class="font-chunky text-xl font-black text-[#1b3b5f] group-hover:text-pink-500 transition-colors">JAEMIN</span>
-          </div>
-          <p class="text-[11px] font-bold text-[#b04a7e] tracking-wider uppercase font-thai">NA JAEMIN · คลิกเปลี่ยนรถสีชมพู 🚗</p>
+          <span class="font-chunky text-xl sm:text-2xl font-black text-[#1b3b5f] group-hover:text-pink-400 transition-colors tracking-wide">JAEMIN</span>
+          <span class="text-2xl group-hover:scale-125 transition-transform duration-200">🐰</span>
         </button>
 
       </div>
 
-      <!-- NCT JNJM Button (Red Accent) -->
+      <!-- NCT JNJM Button: เหลือแค่กรอบสีขาวกับข้อความ NCT JNJM -->
       <div class="mb-6">
         <button 
           onclick="changeCarColor('red')" 
-          class="group inline-flex items-center gap-2.5 bg-[#1b3b5f] hover:bg-[#132c4a] text-white px-5 py-2 rounded-full shadow-md border-2 border-white/60 transition-all active:scale-95 hover:shadow-lg cursor-pointer"
+          class="group inline-flex items-center justify-center bg-white hover:bg-rose-50/70 text-[#1b3b5f] hover:text-rose-600 px-6 py-2 rounded-full shadow-sm hover:shadow-md border-2 border-white transition-all active:scale-95 cursor-pointer"
         >
-          <span id="carColorIndicatorDot" class="w-2.5 h-2.5 rounded-full bg-rose-500 transition-colors"></span>
-          <span class="font-chunky font-bold text-xs sm:text-sm tracking-widest text-[#fbcfe8] group-hover:text-white transition-colors">⚡ NCT JNJM</span>
-          <span class="text-[11px] text-white/80 font-thai">(คลิกเปลี่ยนรถสีแดง 🏎️)</span>
+          <span class="font-chunky font-extrabold text-xs sm:text-sm tracking-[0.2em] transition-colors">NCT JNJM</span>
         </button>
       </div>
 
@@ -239,15 +230,15 @@
           <div class="car-body relative w-full h-full">
             <svg viewBox="0 0 100 52" class="w-full h-full drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]">
               
-              <!-- Dynamic Paint Body (Switches Blue / Pink / Red) -->
-              <path id="carBodyPaint" class="car-paint" d="M12 24 L28 10 L68 10 L86 22 L94 25 C97 27 97 32 94 34 L88 36 L10 36 C6 36 4 32 6 28 Z" fill="#f472b6"/>
+              <!-- Dynamic Paint Body (โทนชมพูพาสเทลอ่อนละมุนเริ่มต้น) -->
+              <path id="carBodyPaint" class="car-paint" d="M12 24 L28 10 L68 10 L86 22 L94 25 C97 27 97 32 94 34 L88 36 L10 36 C6 36 4 32 6 28 Z" fill="#ffd1dc"/>
               
               <!-- Subtle Roof Reflection Highlight -->
-              <path id="carRoofPaint" class="car-paint" d="M30 12 L66 12 L78 20 L24 20 Z" fill="#fbcfe8"/>
+              <path id="carRoofPaint" class="car-paint" d="M30 12 L66 12 L78 20 L24 20 Z" fill="#ffeaf0"/>
 
               <!-- Tinted Windows -->
-              <path d="M30 13 L48 13 L48 21 L24 21 Z" fill="#eff6ff" opacity="0.9"/>
-              <path d="M52 13 L65 13 L75 21 L52 21 Z" fill="#eff6ff" opacity="0.9"/>
+              <path d="M30 13 L48 13 L48 21 L24 21 Z" fill="#ffffff" opacity="0.92"/>
+              <path d="M52 13 L65 13 L75 21 L52 21 Z" fill="#ffffff" opacity="0.92"/>
 
               <!-- Headlight (Glow Effect) & Taillight -->
               <path d="M92 27 L96 28 L92 31 Z" fill="#fef08a"/>
@@ -654,27 +645,26 @@
     let currentFilter = 'all';
     let searchQuery = '';
 
-    // Function to change car color ONLY (Playful Gimmick)
+    // Function to change car color ONLY (เฉดสีพาสเทลอ่อนละมุน Soft Baby Pastel)
     function changeCarColor(type) {
       const carBody = document.getElementById('carBodyPaint');
       const carRoof = document.getElementById('carRoofPaint');
-      const indicatorDot = document.getElementById('carColorIndicatorDot');
 
       if (type === 'jeno') {
-        carBody.setAttribute('fill', '#38bdf8');
-        carRoof.setAttribute('fill', '#bae6fd');
-        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-sky-400 transition-colors";
-        showToast("🚙 เปลี่ยนรถเป็นสีฟ้าสดใส (JENO) แล้ว!");
+        // ฟ้าพาสเทลอ่อน Baby Soft Blue
+        carBody.setAttribute('fill', '#bfe3fc');
+        carRoof.setAttribute('fill', '#e0f2fe');
+        showToast("🚙 เปลี่ยนรถเป็นสีฟ้าพาสเทล (JENO)");
       } else if (type === 'jaemin') {
-        carBody.setAttribute('fill', '#f472b6');
-        carRoof.setAttribute('fill', '#fbcfe8');
-        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-pink-400 transition-colors";
-        showToast("🌸 เปลี่ยนรถเป็นสีชมพูพาสเทล (JAEMIN) แล้ว!");
+        // ชมพูพาสเทลอ่อน Baby Soft Pink
+        carBody.setAttribute('fill', '#ffd1dc');
+        carRoof.setAttribute('fill', '#ffeaf0');
+        showToast("🌸 เปลี่ยนรถเป็นสีชมพูพาสเทล (JAEMIN)");
       } else if (type === 'red') {
-        carBody.setAttribute('fill', '#f43f5e');
-        carRoof.setAttribute('fill', '#fda4af');
-        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-rose-500 transition-colors";
-        showToast("🏎️ เปลี่ยนรถเป็นสีแดงกุหลาบ (NCT JNJM) แล้ว!");
+        // แดงกุหลาบละมุน Soft Rose Red
+        carBody.setAttribute('fill', '#fb7185');
+        carRoof.setAttribute('fill', '#fecdd3');
+        showToast("🏎️ เปลี่ยนรถเป็นสีแดง (NCT JNJM)");
       }
     }
 
