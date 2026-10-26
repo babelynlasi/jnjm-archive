@@ -25,9 +25,15 @@
             thai: ['Kanit', 'sans-serif'],
             sans: ['Plus Jakarta Sans', 'Kanit', 'sans-serif'],
           },
+          colors: {
+            pastelPink: '#ffd6e7',
+            pastelPinkHover: '#fbcfe8',
+            pastelBlue: '#c7e4fd',
+            pastelPurple: '#e9d5ff',
+          },
           boxShadow: {
-            'sky-card': '0 16px 36px -10px rgba(50, 115, 180, 0.28), 0 4px 12px -2px rgba(50, 115, 180, 0.12)',
-            'white-card': '0 8px 20px -4px rgba(27, 59, 95, 0.08), 0 2px 6px -1px rgba(27, 59, 95, 0.04)',
+            'pastel-card': '0 16px 36px -10px rgba(236, 128, 175, 0.22), 0 6px 16px -2px rgba(66, 153, 225, 0.16)',
+            'white-card': '0 8px 24px -4px rgba(71, 85, 105, 0.08), 0 2px 6px -1px rgba(71, 85, 105, 0.04)',
           }
         }
       }
@@ -35,71 +41,25 @@
   </script>
 
   <style>
-
-    :root {
-  /* กำหนดโทนสีพาสเทล */
-  --blue-pastel: #A0C4FF;
-  --pink-pastel: #FFB7B2;
-  --pink-accent: #FF9AA2;
-  --bg-dark: #121316;
-}
-
-/* 1. แสงนีออนพื้นหลังแบบทูโทน ฟ้า-ชมพูพาสเทล */
-body {
-  background-color: var(--bg-dark);
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(160, 196, 255, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(255, 183, 178, 0.2) 0%, transparent 45%);
-}
-
-/* 2. หัวเว็บหรือข้อความไฮไลต์ไล่เฉดสี ฟ้า -> ชมพูพาสเทล */
-.brand-title {
-  background: linear-gradient(135deg, var(--blue-pastel), var(--pink-pastel));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(255, 183, 178, 0.3);
-}
-
-/* 3. สไตล์ปุ่มแจมิน (Jaemin) ให้เป็นพาสเทลละมุน */
-.btn-jaemin {
-  background: rgba(255, 183, 178, 0.15);
-  border: 1px solid var(--pink-pastel);
-  color: var(--pink-pastel);
-  box-shadow: 0 0 12px rgba(255, 183, 178, 0.25);
-  transition: all 0.3s ease;
-}
-
-.btn-jaemin:hover {
-  background: var(--pink-pastel);
-  color: #1a1a1a;
-  box-shadow: 0 0 20px rgba(255, 183, 178, 0.6);
-}
-
-/* 4. เส้นขอบการ์ดหรือกล่องเนื้อหาเรืองแสงสีชมพูผสมฟ้า */
-.content-card {
-  border: 1px solid rgba(255, 183, 178, 0.25);
-  box-shadow: 0 4px 20px rgba(255, 183, 178, 0.08);
-}
-    
-    /* 3D Chunky Pop Title */
+    /* 3D Chunky Pop Title with Soft Pastel Shadow */
     .chunky-title {
       color: #ffffff;
       text-shadow: 
-        0 2px 0 #8abce8,
-        0 4px 0 #5f9cd2,
-        0 7px 15px rgba(27, 59, 95, 0.35);
+        0 2px 0 #f4a7c8,
+        0 4px 0 #8abce8,
+        0 8px 18px rgba(180, 83, 130, 0.3);
       letter-spacing: -0.01em;
     }
 
     .sub-emboss {
-      letter-spacing: 0.24em;
-      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.26em;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
     }
 
     /* Floating Clouds Animation */
     @keyframes floatCloud {
       0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-6px) scale(1.02); }
+      50% { transform: translateY(-7px) scale(1.02); }
     }
     .animate-cloud-slow {
       animation: floatCloud 6s ease-in-out infinite;
@@ -134,8 +94,8 @@ body {
       position: absolute;
       bottom: 7px;
       left: 0;
-      width: 78px;
-      height: 40px;
+      width: 82px;
+      height: 42px;
       animation: driveCar 8.5s linear infinite;
       z-index: 20;
     }
@@ -165,7 +125,7 @@ body {
     /* Floating Heart Reaction */
     @keyframes floatHeart {
       0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-38px) scale(1.35); }
+      100% { opacity: 0; transform: translateY(-40px) scale(1.4); }
     }
     .floating-heart {
       position: absolute;
@@ -179,38 +139,38 @@ body {
       transition: fill 0.4s ease, filter 0.4s ease;
     }
 
-    /* Interactive button active pulse */
-    .btn-selected {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px -4px rgba(27, 59, 95, 0.22);
+    /* Soft Glow for Active Card */
+    .active-card-glow {
+      box-shadow: 0 0 20px rgba(244, 114, 182, 0.45), 0 8px 24px -4px rgba(71, 85, 105, 0.08);
+      border-color: #f472b6 !important;
     }
   </style>
 </head>
-<body class="bg-[#dcf0fc] text-[#1b3b5f] font-sans min-h-screen py-6 px-3 sm:px-6 antialiased selection:bg-[#9cd3fa] selection:text-[#122e4d]">
+<body class="bg-gradient-to-b from-[#e3f2fd] via-[#fce7f3] to-[#e0f2fe] text-[#1b3b5f] font-sans min-h-screen py-6 px-3 sm:px-6 antialiased selection:bg-pink-200 selection:text-pink-900">
 
   <div class="max-w-4xl mx-auto space-y-6">
 
     <!-- ==============================================
-         1. TOP HERO CARD (Black Road + Interactive Car Color)
+         1. TOP HERO CARD (Cotton Candy Sunset: Sky Blue + Pastel Pink)
          ============================================== -->
-    <header class="relative bg-gradient-to-b from-[#b7dcfa] via-[#98cbf6] to-[#80bcf2] rounded-[32px] pt-7 px-6 sm:px-9 pb-0 shadow-sky-card border-[3px] border-white/95 overflow-hidden text-center">
+    <header class="relative bg-gradient-to-br from-[#a5d8ff] via-[#d0bfff] to-[#fbcfe8] rounded-[34px] pt-8 px-6 sm:px-9 pb-0 shadow-pastel-card border-[3.5px] border-white/95 overflow-hidden text-center">
       
-      <!-- Decorative Clouds -->
+      <!-- Decorative Clouds with Soft Tint -->
       <div class="absolute top-4 left-6 text-white/90 animate-cloud-slow pointer-events-none">
         <svg class="w-16 h-10 sm:w-20 sm:h-12 fill-current drop-shadow-sm" viewBox="0 0 64 40">
           <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
         </svg>
       </div>
-      <div class="absolute top-6 right-8 text-white/85 animate-cloud-fast hidden sm:block pointer-events-none">
+      <div class="absolute top-6 right-8 text-white/90 animate-cloud-fast hidden sm:block pointer-events-none">
         <svg class="w-22 h-13 sm:w-24 sm:h-14 fill-current drop-shadow-sm" viewBox="0 0 64 40">
           <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
         </svg>
       </div>
 
-      <!-- Small Pill Badge -->
-      <div class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-[#1b3b5f] border border-white shadow-sm mb-3">
-        <span>⚡</span>
-        <span>JENO &amp; JAEMIN ARCHIVE</span>
+      <!-- Small Badge -->
+      <div class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-[#20436d] border border-white shadow-sm mb-3">
+        <span class="text-amber-500">⚡</span>
+        <span class="tracking-wide">JENO &amp; JAEMIN ARCHIVE</span>
       </div>
 
       <!-- Bold 3D Title -->
@@ -219,57 +179,57 @@ body {
       </h1>
       
       <!-- Subtitle -->
-      <p class="font-chunky text-xs sm:text-sm font-extrabold tracking-widest text-[#1c4068] sub-emboss uppercase mb-6">
+      <p class="font-chunky text-xs sm:text-sm font-extrabold tracking-widest text-[#2c4768] sub-emboss uppercase mb-6">
         J N J M · A R C H I V E
       </p>
 
-      <!-- Interactive Switcher Cards for Jeno & Jaemin (Car Color Gimmick Only) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto mb-4">
+      <!-- Interactive Switcher Cards for Jeno & Jaemin (Pastel Accent) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-lg mx-auto mb-4">
         
-        <!-- JENO Card Button (Changes car to Blue) -->
+        <!-- JENO Card Button (Pastel Blue) -->
         <button 
           id="jenoCardBtn" 
           onclick="changeCarColor('jeno')" 
-          class="group bg-white/95 hover:bg-white rounded-2xl p-3.5 border-2 border-white shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
+          class="group bg-white/90 hover:bg-white rounded-2xl p-4 border-2 border-white hover:border-sky-300 shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
         >
-          <div class="flex items-center justify-center gap-2">
+          <div class="flex items-center justify-center gap-2 mb-1">
             <span class="text-2xl group-hover:scale-110 transition-transform">🐶</span>
-            <span class="font-chunky text-xl font-black text-[#1b3b5f] group-hover:text-blue-600 transition-colors">JENO</span>
+            <span class="font-chunky text-xl font-black text-[#1b3b5f] group-hover:text-sky-600 transition-colors">JENO</span>
           </div>
-          <p class="text-[11px] font-bold text-[#3e6a97] tracking-wider uppercase font-thai">LEE JENO · คลิกเปลี่ยนรถสีฟ้า 🚙</p>
+          <p class="text-[11px] font-bold text-[#446d97] tracking-wider uppercase font-thai">LEE JENO · คลิกเปลี่ยนรถสีฟ้า 🚙</p>
         </button>
 
-        <!-- JAEMIN Card Button (Changes car to Pink) -->
+        <!-- JAEMIN Card Button (Pastel Pink) -->
         <button 
           id="jaeminCardBtn" 
           onclick="changeCarColor('jaemin')" 
-          class="group bg-white/95 hover:bg-white rounded-2xl p-3.5 border-2 border-white shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
+          class="group bg-white/90 hover:bg-white rounded-2xl p-4 border-2 border-white hover:border-pink-300 shadow-white-card transition-all text-center relative overflow-hidden active:scale-95"
         >
-          <div class="flex items-center justify-center gap-2">
+          <div class="flex items-center justify-center gap-2 mb-1">
             <span class="text-2xl group-hover:scale-110 transition-transform">🐰</span>
             <span class="font-chunky text-xl font-black text-[#1b3b5f] group-hover:text-pink-500 transition-colors">JAEMIN</span>
           </div>
-          <p class="text-[11px] font-bold text-[#3e6a97] tracking-wider uppercase font-thai">NA JAEMIN · คลิกเปลี่ยนรถสีชมพู 🚗</p>
+          <p class="text-[11px] font-bold text-[#b04a7e] tracking-wider uppercase font-thai">NA JAEMIN · คลิกเปลี่ยนรถสีชมพู 🚗</p>
         </button>
 
       </div>
 
-      <!-- NCT JNJM Button (Changes Car to Red) -->
+      <!-- NCT JNJM Button (Red Accent) -->
       <div class="mb-6">
         <button 
           onclick="changeCarColor('red')" 
-          class="group inline-flex items-center gap-2 bg-[#1b3b5f] hover:bg-[#122b46] text-white px-5 py-2 rounded-full shadow-md border border-white/40 transition-all active:scale-95 hover:shadow-lg cursor-pointer"
+          class="group inline-flex items-center gap-2.5 bg-[#1b3b5f] hover:bg-[#132c4a] text-white px-5 py-2 rounded-full shadow-md border-2 border-white/60 transition-all active:scale-95 hover:shadow-lg cursor-pointer"
         >
-          <span id="carColorIndicatorDot" class="w-2.5 h-2.5 rounded-full bg-red-500 transition-colors"></span>
-          <span class="font-chunky font-bold text-xs sm:text-sm tracking-widest text-[#9cd3fa] group-hover:text-white transition-colors">⚡ NCT JNJM</span>
-          <span class="text-[11px] text-white/70 font-thai">(คลิกเปลี่ยนรถสีแดง 🏎️)</span>
+          <span id="carColorIndicatorDot" class="w-2.5 h-2.5 rounded-full bg-rose-500 transition-colors"></span>
+          <span class="font-chunky font-bold text-xs sm:text-sm tracking-widest text-[#fbcfe8] group-hover:text-white transition-colors">⚡ NCT JNJM</span>
+          <span class="text-[11px] text-white/80 font-thai">(คลิกเปลี่ยนรถสีแดง 🏎️)</span>
         </button>
       </div>
 
       <!-- ==============================================
            DARK ASPHALT ROAD WITH INTERACTIVE COLOR CAR
            ============================================== -->
-      <div class="relative -mx-6 sm:-mx-9 bg-[#23272d] border-t-2 border-[#16191c] h-14 overflow-hidden flex items-center shadow-inner">
+      <div class="relative -mx-6 sm:-mx-9 bg-[#22262d] border-t-2 border-[#15181b] h-14 overflow-hidden flex items-center shadow-inner">
         
         <!-- White Dashed Lane Line -->
         <div class="absolute inset-x-0 h-[4px] road-dash-line top-1/2 -translate-y-1/2 z-0 opacity-90"></div>
@@ -280,18 +240,18 @@ body {
             <svg viewBox="0 0 100 52" class="w-full h-full drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]">
               
               <!-- Dynamic Paint Body (Switches Blue / Pink / Red) -->
-              <path id="carBodyPaint" class="car-paint" d="M12 24 L28 10 L68 10 L86 22 L94 25 C97 27 97 32 94 34 L88 36 L10 36 C6 36 4 32 6 28 Z" fill="#ef4444"/>
+              <path id="carBodyPaint" class="car-paint" d="M12 24 L28 10 L68 10 L86 22 L94 25 C97 27 97 32 94 34 L88 36 L10 36 C6 36 4 32 6 28 Z" fill="#f472b6"/>
               
               <!-- Subtle Roof Reflection Highlight -->
-              <path id="carRoofPaint" class="car-paint" d="M30 12 L66 12 L78 20 L24 20 Z" fill="#f87171"/>
+              <path id="carRoofPaint" class="car-paint" d="M30 12 L66 12 L78 20 L24 20 Z" fill="#fbcfe8"/>
 
               <!-- Tinted Windows -->
               <path d="M30 13 L48 13 L48 21 L24 21 Z" fill="#eff6ff" opacity="0.9"/>
               <path d="M52 13 L65 13 L75 21 L52 21 Z" fill="#eff6ff" opacity="0.9"/>
 
               <!-- Headlight (Glow Effect) & Taillight -->
-              <path d="M92 27 L96 28 L92 31 Z" fill="#fde047"/>
-              <path d="M6 27 L8 27 L7 31 L5 30 Z" fill="#ef4444"/>
+              <path d="M92 27 L96 28 L92 31 Z" fill="#fef08a"/>
+              <path d="M6 27 L8 27 L7 31 L5 30 Z" fill="#f43f5e"/>
 
               <!-- Door Cutout Line -->
               <line x1="50" y1="20" x2="50" y2="34" stroke="#111827" stroke-width="1.3" opacity="0.65"/>
@@ -319,29 +279,28 @@ body {
     </header>
 
     <!-- ==============================================
-         2. CATEGORY FILTER TABS
+         2. CATEGORY FILTER TABS (Pastel Sky & Rose accents)
          ============================================== -->
     <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
-      <button onclick="selectCategory('all')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white" data-cat="all">
+      <button onclick="selectCategory('all')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white" data-cat="all">
         ✨ ทั้งหมด (All)
       </button>
-      <button onclick="selectCategory('duo')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="duo">
+      <button onclick="selectCategory('duo')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-pink-200/60 bg-white/90 text-[#1b3b5f] hover:bg-pink-50" data-cat="duo">
         ⚡ งานคู่ &amp; โมเมนต์ (JNJM Duo)
       </button>
-      <button onclick="selectCategory('jeno')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jeno">
+      <button onclick="selectCategory('jeno')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-sky-200/60 bg-white/90 text-[#1b3b5f] hover:bg-sky-50" data-cat="jeno">
         🐶 งานเดี่ยว JENO
       </button>
-      <button onclick="selectCategory('jaemin')" class="filter-pill-btn px-5 py-2 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jaemin">
+      <button onclick="selectCategory('jaemin')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-pink-200/60 bg-white/90 text-[#1b3b5f] hover:bg-pink-50" data-cat="jaemin">
         🐰 งานเดี่ยว JAEMIN
       </button>
     </div>
 
     <!-- ==============================================
-         2. SECOND CARD (HIGHLIGHTS & ARCHIVES)
-         - Same Sky-Blue gradient as Top Card
-         - NO DOT GRID / NO BALLS
+         3. SECOND CARD (HIGHLIGHTS & ARCHIVES)
+         - Matching Pastel Blue + Pink Soft Gradient
          ============================================== -->
-    <main class="relative bg-gradient-to-b from-[#b7dcfa] via-[#98cbf6] to-[#80bcf2] rounded-[32px] p-6 sm:p-9 shadow-sky-card border-[3px] border-white/95 overflow-hidden">
+    <main class="relative bg-gradient-to-br from-[#a5d8ff] via-[#d0bfff] to-[#fbcfe8] rounded-[34px] p-6 sm:p-9 shadow-pastel-card border-[3.5px] border-white/95 overflow-hidden">
       
       <!-- Matching Soft Floating Clouds -->
       <div class="absolute top-4 left-6 text-white/90 animate-cloud-slow pointer-events-none">
@@ -349,7 +308,7 @@ body {
           <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
         </svg>
       </div>
-      <div class="absolute top-6 right-8 text-white/85 animate-cloud-fast hidden sm:block pointer-events-none">
+      <div class="absolute top-6 right-8 text-white/90 animate-cloud-fast hidden sm:block pointer-events-none">
         <svg class="w-22 h-13 sm:w-24 sm:h-14 fill-current drop-shadow-sm" viewBox="0 0 64 40">
           <path d="M12 36a10 10 0 0 1-1.5-19.9A15 15 0 0 1 38 12a14 14 0 0 1 14 11.2A10 10 0 0 1 50 36H12z"/>
         </svg>
@@ -357,33 +316,17 @@ body {
 
       <!-- Header & Screen Stage Pill -->
       <div class="text-center mb-6 relative z-10">
-        <div class="inline-flex items-center gap-2 text-xs font-chunky font-bold text-[#173a62] tracking-widest uppercase mb-1">
+        <div class="inline-flex items-center gap-2 text-xs font-chunky font-bold text-[#1a385c] tracking-widest uppercase mb-1">
           <span>✨</span>
           <span>JNJM HIGHLIGHTS &amp; PROJECTS</span>
           <span>✨</span>
         </div>
-        <p class="text-xs text-[#1c4470] font-thai font-medium">รวมผลงานเดี่ยว แฟชั่น งานถ่ายภาพ และผลงานคู่ของเจโน่กับแจมิน</p>
+        <p class="text-xs text-[#2b4c73] font-thai font-medium">รวมผลงานเดี่ยว แฟชั่น งานถ่ายภาพ และผลงานคู่ของเจโน่กับแจมิน</p>
         
         <!-- Screen Bar -->
-        <div class="mt-4 max-w-md mx-auto h-7 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm border border-white">
+        <div class="mt-4 max-w-md mx-auto h-7 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm border border-white">
           <span class="text-[10px] font-extrabold tracking-[0.35em] text-[#1b3b5f]">S C R E E N &nbsp; S T A G E</span>
         </div>
-      </div>
-
-      <!-- Independent Filter Tabs for Works -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-6 relative z-10">
-        <button onclick="selectCategory('all')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white" data-cat="all">
-          ✨ ทั้งหมด (All)
-        </button>
-        <button onclick="selectCategory('duo')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="duo">
-          ⚡ งานคู่ &amp; โมเมนต์ (JNJM Duo)
-        </button>
-        <button onclick="selectCategory('jeno')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jeno">
-          🐶 งานเดี่ยว JENO
-        </button>
-        <button onclick="selectCategory('jaemin')" class="filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white" data-cat="jaemin">
-          🐰 งานเดี่ยว JAEMIN
-        </button>
       </div>
 
       <!-- Works Cards Grid -->
@@ -394,9 +337,9 @@ body {
       <!-- Status Legend -->
       <div class="flex flex-wrap items-center justify-between text-xs text-[#1f4773] gap-3 relative z-10 font-thai px-1">
         <div class="flex items-center gap-4 font-semibold">
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> เจโน่ (JENO)</span>
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span> แจมิน (JAEMIN)</span>
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#1b3b5f]"></span> งานคู่ (JNJM Duo)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-sky-500 shadow-sm"></span> เจโน่ (JENO)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-sm"></span> แจมิน (JAEMIN)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#1b3b5f] shadow-sm"></span> งานคู่ (JNJM Duo)</span>
         </div>
         <div class="font-mono text-[11px] font-bold tracking-wider text-[#1d456f]">
           LIVE · SYNCED ARCHIVE
@@ -405,19 +348,19 @@ body {
     </main>
 
     <!-- ==============================================
-         4. OFFICIAL ACCOUNTS & SEARCH
+         4. OFFICIAL ACCOUNTS & SEARCH (Pastel Gradient)
          ============================================== -->
-    <section class="bg-gradient-to-b from-[#b8dcf9] to-[#a2d0f6] rounded-[32px] p-5 sm:p-7 shadow-sky-card border-[3px] border-white/95">
+    <section class="bg-gradient-to-br from-[#c0e3fe] via-[#f7d6e6] to-[#e4e7ff] rounded-[34px] p-5 sm:p-7 shadow-pastel-card border-[3.5px] border-white/95">
       
       <!-- Search Bar -->
-      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-6 border-b border-white/50">
+      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-6 border-b border-white/60">
         <div class="flex items-center gap-3">
-          <span class="text-2xl p-2.5 bg-white text-[#1b3b5f] rounded-2xl shadow-sm border border-white">
+          <span class="text-2xl p-2.5 bg-white text-pink-500 rounded-2xl shadow-sm border border-white">
             <i class="fa-solid fa-magnifying-glass"></i>
           </span>
           <div>
             <h2 class="font-chunky text-lg font-bold text-[#1b3b5f]">ค้นหาผลงานของเจโน่ &amp; แจมิน</h2>
-            <p class="text-xs text-[#335d88] font-thai">ค้นหาตามชื่อแบรนด์, งานถ่ายภาพ, ยูนิต หรือนิตยสาร</p>
+            <p class="text-xs text-[#43658a] font-thai">ค้นหาตามชื่อแบรนด์, งานถ่ายภาพ, ยูนิต หรือนิตยสาร</p>
           </div>
         </div>
 
@@ -427,7 +370,7 @@ body {
               type="text" 
               id="searchInput" 
               placeholder="เช่น Ferragamo, Narcissism..." 
-              class="w-full bg-white border-2 border-white text-sm rounded-xl px-4 py-2.5 text-[#1b3b5f] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1b3b5f]/40 transition-all shadow-sm"
+              class="w-full bg-white border-2 border-white text-sm rounded-xl px-4 py-2.5 text-[#1b3b5f] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all shadow-sm"
               oninput="handleSearch(this.value)"
             >
           </div>
@@ -454,9 +397,9 @@ body {
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           
           <!-- Jeno Official Instagram -->
-          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/95 hover:bg-white border-2 border-white shadow-white-card transition-all group">
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/95 hover:bg-white border-2 border-white hover:border-sky-200 shadow-white-card transition-all group">
             <div class="flex items-center gap-3.5">
-              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xl shadow-sm">
                 <i class="fa-brands fa-instagram"></i>
               </div>
               <div>
@@ -472,16 +415,16 @@ body {
               <button onclick="copyToClipboard('@leejen_o_423', 'คัดลอก IG เจโน่แล้ว!')" class="p-2.5 text-slate-400 hover:text-[#1b3b5f] text-xs rounded-xl hover:bg-slate-100 transition-colors" title="Copy username">
                 <i class="fa-regular fa-copy text-sm"></i>
               </button>
-              <a href="https://www.instagram.com/leejen_o_423/" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-xl text-xs transition-colors" title="Open Instagram">
+              <a href="https://www.instagram.com/leejen_o_423/" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-sky-50 hover:bg-sky-100 text-sky-600 rounded-xl text-xs transition-colors" title="Open Instagram">
                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
               </a>
             </div>
           </div>
 
           <!-- Jaemin Official Instagram -->
-          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/95 hover:bg-white border-2 border-white shadow-white-card transition-all group">
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/95 hover:bg-white border-2 border-white hover:border-pink-200 shadow-white-card transition-all group">
             <div class="flex items-center gap-3.5">
-              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-400 to-pink-500 flex items-center justify-center text-white text-xl shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-400 to-rose-500 flex items-center justify-center text-white text-xl shadow-sm">
                 <i class="fa-brands fa-instagram"></i>
               </div>
               <div>
@@ -505,15 +448,15 @@ body {
 
         </div>
 
-        <p class="text-[11px] text-[#2c537d] font-semibold mt-4 text-center font-thai">
+        <p class="text-[11px] text-[#4b6d92] font-semibold mt-4 text-center font-thai">
           💡 แตะไอคอน <i class="fa-regular fa-copy"></i> เพื่อคัดลอกแอคเคาท์ หรือแตะ <i class="fa-solid fa-arrow-up-right-from-square"></i> เพื่อไปยังหน้าโปรไฟล์จริง
         </p>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-4 text-xs text-[#3d6896] font-thai font-medium">
-      JENO &amp; JAEMIN (JNJM) ARCHIVE · Made with Love
+    <footer class="text-center py-4 text-xs text-[#4b719c] font-thai font-medium">
+      JENO &amp; JAEMIN (JNJM) ARCHIVE · Made with Love 🌸
     </footer>
   </div>
 
@@ -521,9 +464,9 @@ body {
        MODAL: WORK DETAILS POPUP
        ============================================== -->
   <div id="detailModal" class="fixed inset-0 bg-[#16304d]/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-[30px] max-w-lg w-full overflow-hidden shadow-2xl border-4 border-white">
-      <div id="modalHeader" class="relative p-6 bg-gradient-to-br from-[#98cbf6] via-[#81bef3] to-[#6bb0ed] text-[#1b3b5f]">
-        <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-[#1b3b5f] flex items-center justify-center transition-all shadow-sm">
+    <div class="bg-white rounded-[32px] max-w-lg w-full overflow-hidden shadow-2xl border-4 border-white">
+      <div id="modalHeader" class="relative p-6 bg-gradient-to-br from-[#a5d8ff] via-[#d0bfff] to-[#fbcfe8] text-[#1b3b5f]">
+        <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/85 hover:bg-white text-[#1b3b5f] flex items-center justify-center transition-all shadow-sm">
           <i class="fa-solid fa-xmark"></i>
         </button>
         <span id="modalBadge" class="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white text-[#1b3b5f] shadow-sm mb-2">CATEGORY</span>
@@ -535,14 +478,14 @@ body {
           <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">เกี่ยวกับผลงาน / ไฮไลต์</h4>
           <p id="modalDescription" class="text-sm text-[#27486f] leading-relaxed font-thai">Description</p>
         </div>
-        <div class="bg-[#f0f7fd] p-4 rounded-2xl border border-[#d2e8fb] space-y-2">
+        <div class="bg-[#fdf2f8]/70 p-4 rounded-2xl border border-pink-100 space-y-2">
           <div class="flex justify-between text-xs">
             <span class="text-slate-500 font-thai">ปี / ช่วงเวลาเปิดตัว:</span>
             <span id="modalYear" class="font-bold text-[#1b3b5f]">2024</span>
           </div>
           <div class="flex justify-between text-xs">
             <span class="text-slate-500 font-thai">ศิลปิน:</span>
-            <span id="modalMembers" class="font-bold text-blue-700">JENO &amp; JAEMIN</span>
+            <span id="modalMembers" class="font-bold text-pink-600">JENO &amp; JAEMIN</span>
           </div>
         </div>
         <div class="flex gap-2 pt-2">
@@ -559,13 +502,12 @@ body {
 
   <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-6 right-6 bg-[#1b3b5f] text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs font-bold transition-all duration-300 translate-y-20 opacity-0 pointer-events-none z-50 border-2 border-white/80">
-    <span class="text-base text-[#a6e22e]"><i class="fa-solid fa-circle-check"></i></span>
+    <span class="text-base text-[#f472b6]"><i class="fa-solid fa-heart"></i></span>
     <span id="toastMsg">แจ้งเตือนสำเร็จ</span>
   </div>
 
   <!-- JavaScript Application Logic -->
   <script>
-    // Purely JENO, JAEMIN & JNJM DUO Works (Group Works Removed)
     const worksData = [
       // 1. DUO WORKS (งานคู่)
       {
@@ -575,7 +517,7 @@ body {
         artistLabel: "JENO & JAEMIN (งานคู่)",
         type: "Duo Special",
         tag: "Soulmates",
-        badgeBg: "bg-[#1b3b5f]",
+        badgeBg: "bg-gradient-to-r from-sky-500 to-pink-500",
         year: "2016 - ปัจจุบัน",
         highlight: "มิตรภาพที่เติบโตมาด้วยกันตั้งแต่เข้าตึก SM ในวันเดียวกัน",
         description: "คู่หู 'เจโน่แจมิน' (JNJM) เพื่อนร่วมชั้นเรียนและเพื่อนร่วมวงที่เข้า SM พร้อมกันในวันเดียวกัน สร้างโมเมนต์และสเตจคู่ในตำนานมากมาย",
@@ -605,7 +547,7 @@ body {
         artistLabel: "JENO & JAEMIN (งานคู่)",
         type: "Fashion Pictorial",
         tag: "Visual Chemistry",
-        badgeBg: "bg-[#1b3b5f]",
+        badgeBg: "bg-gradient-to-r from-sky-500 to-pink-500",
         year: "2023",
         highlight: "การถ่ายแฟชั่นเซตคู่ที่ผสานวิชวลสองสไตล์อันทรงพลัง",
         description: "ภาพถ่ายแฟชั่นเซตคู่ที่เผยเสน่ห์อันน่าประทับใจ การจัดวางคอนทราสต์ระหว่างความแข็งแกร่งของเจโน่และความนุ่มละมุนของแจมิน",
@@ -622,7 +564,7 @@ body {
         artistLabel: "JENO (งานเดี่ยว)",
         type: "Fashion & Ambassador",
         tag: "Global Ambassador",
-        badgeBg: "bg-blue-600",
+        badgeBg: "bg-sky-600",
         year: "2023 - ปัจจุบัน",
         highlight: "ศิลปินชายระดับโลกคนแรกที่ได้รับเลือกเป็น Global Ambassador ของ Ferragamo",
         description: "เจโน่สร้างประวัติศาสตร์ในฐานะ Global Brand Ambassador ผู้ชายคนแรกของแบรนด์แฟชั่นระดับตำนานอย่าง Ferragamo ด้วยภาพลักษณ์ที่เรียบหรู คมคาย และมีเสน่ห์เฉพาะตัว",
@@ -637,7 +579,7 @@ body {
         artistLabel: "JENO (งานเดี่ยว)",
         type: "Runway Opening Model",
         tag: "Global Stage",
-        badgeBg: "bg-blue-600",
+        badgeBg: "bg-sky-600",
         year: "2022",
         highlight: "ศิลปินเคป็อปคนแรกที่เปิดรันเวย์นิวยอร์กแฟชั่นวีค (Peter Do)",
         description: "เจโน่เปิดรันเวย์นิวยอร์กแฟชั่นวีคในฐานะนายแบบหลักของแบรนด์ Peter Do สร้างความฮือฮาไปทั่ววงการแฟชั่นระดับโลกด้วยการเดินแบบที่สง่างามและเปี่ยมพลัง",
@@ -652,7 +594,7 @@ body {
         artistLabel: "JENO (งานเดี่ยว)",
         type: "Solo Cover Magazine",
         tag: "Editorial",
-        badgeBg: "bg-blue-600",
+        badgeBg: "bg-sky-600",
         year: "2024",
         highlight: "ขึ้นปกนิตยสารแฟชั่นชั้นนำ ถ่ายทอดภาพลักษณ์หนุ่มเท่สุดสมาร์ท",
         description: "แฟชั่นเซตและบทสัมภาษณ์เดี่ยวที่สะท้อนทัศนคติการทำงาน ความมุ่งมั่น และเสน่ห์ของกัปตันทีมและแดนเซอร์ผู้ทรงพลัง",
@@ -712,43 +654,39 @@ body {
     let currentFilter = 'all';
     let searchQuery = '';
 
-    // Function to change car color ONLY (Playful Gimmick - No impact on bottom content)
+    // Function to change car color ONLY (Playful Gimmick)
     function changeCarColor(type) {
       const carBody = document.getElementById('carBodyPaint');
       const carRoof = document.getElementById('carRoofPaint');
       const indicatorDot = document.getElementById('carColorIndicatorDot');
 
       if (type === 'jeno') {
-        // Change Car to Sky Blue
-        carBody.setAttribute('fill', '#3b82f6');
-        carRoof.setAttribute('fill', '#60a5fa');
-        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-blue-500 transition-colors";
-        showToast("🚙 เปลี่ยนรถเป็นสีฟ้า (JENO) แล้ว!");
+        carBody.setAttribute('fill', '#38bdf8');
+        carRoof.setAttribute('fill', '#bae6fd');
+        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-sky-400 transition-colors";
+        showToast("🚙 เปลี่ยนรถเป็นสีฟ้าสดใส (JENO) แล้ว!");
       } else if (type === 'jaemin') {
-        // Change Car to Pastel Pink
-        carBody.setAttribute('fill', '#ec4899');
-        carRoof.setAttribute('fill', '#f472b6');
-        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-pink-500 transition-colors";
-        showToast("🚗 เปลี่ยนรถเป็นสีชมพู (JAEMIN) แล้ว!");
+        carBody.setAttribute('fill', '#f472b6');
+        carRoof.setAttribute('fill', '#fbcfe8');
+        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-pink-400 transition-colors";
+        showToast("🌸 เปลี่ยนรถเป็นสีชมพูพาสเทล (JAEMIN) แล้ว!");
       } else if (type === 'red') {
-        // Change Car to Cherry Red (NCT JNJM)
-        carBody.setAttribute('fill', '#ef4444');
-        carRoof.setAttribute('fill', '#f87171');
-        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-red-500 transition-colors";
-        showToast("🏎️ เปลี่ยนรถเป็นสีแดง (NCT JNJM) แล้ว!");
+        carBody.setAttribute('fill', '#f43f5e');
+        carRoof.setAttribute('fill', '#fda4af');
+        indicatorDot.className = "w-2.5 h-2.5 rounded-full bg-rose-500 transition-colors";
+        showToast("🏎️ เปลี่ยนรถเป็นสีแดงกุหลาบ (NCT JNJM) แล้ว!");
       }
     }
 
-    // Function to select category for works (Independent from the car at the top)
+    // Function to select category for works
     function selectCategory(category) {
       currentFilter = category;
 
-      // Update Filter Pills
       document.querySelectorAll('.filter-pill-btn').forEach(btn => {
         if (btn.getAttribute('data-cat') === category) {
-          btn.className = "filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white";
+          btn.className = "filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white";
         } else {
-          btn.className = "filter-pill-btn px-4 py-1.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-white/90 text-[#1b3b5f] hover:bg-white";
+          btn.className = "filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-pink-200/60 bg-white/90 text-[#1b3b5f] hover:bg-pink-50";
         }
       });
 
@@ -772,7 +710,7 @@ body {
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div class="col-span-full py-12 text-center text-[#214975] bg-white/60 rounded-3xl backdrop-blur-sm border border-white">
+          <div class="col-span-full py-12 text-center text-[#214975] bg-white/70 rounded-3xl backdrop-blur-sm border border-white">
             <div class="text-4xl mb-2">🔍</div>
             <p class="font-thai font-bold text-sm">ไม่พบผลงานที่ตรงกับคำค้นหา ลองค้นหาด้วยคำอื่นดูนะครับ</p>
           </div>
@@ -782,14 +720,14 @@ body {
 
       filtered.forEach(item => {
         const card = document.createElement('div');
-        card.className = "group relative bg-white/95 hover:bg-white rounded-[24px] p-4 sm:p-5 border-2 border-white shadow-white-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col justify-between overflow-hidden";
+        card.className = "group relative bg-white/95 hover:bg-white rounded-[26px] p-4 sm:p-5 border-2 border-white hover:border-pink-200 shadow-white-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col justify-between overflow-hidden";
         card.onclick = (e) => {
           if (e.target.closest('.like-btn')) return;
           openModal(item);
         };
 
         const ribbonHtml = item.ribbon ? `
-          <div class="absolute -right-10 top-5 bg-gradient-to-r from-[#d9483b] to-[#be3024] text-white font-chunky text-[10px] font-black px-10 py-0.5 rotate-45 shadow-sm tracking-wider">
+          <div class="absolute -right-10 top-5 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-chunky text-[10px] font-black px-10 py-0.5 rotate-45 shadow-sm tracking-wider">
             ${item.ribbon}
           </div>
         ` : '';
@@ -804,10 +742,10 @@ body {
               <span class="text-[11px] font-mono text-[#577b9f] font-bold">${item.year}</span>
             </div>
 
-            <h4 class="font-chunky text-base sm:text-lg font-black text-[#1b3b5f] group-hover:text-blue-600 transition-colors mb-0.5 line-clamp-1">
+            <h4 class="font-chunky text-base sm:text-lg font-black text-[#1b3b5f] group-hover:text-pink-600 transition-colors mb-0.5 line-clamp-1">
               ${item.title}
             </h4>
-            <p class="text-xs font-bold ${item.artistCategory === 'jeno' ? 'text-blue-600' : item.artistCategory === 'jaemin' ? 'text-pink-500' : 'text-[#1b3b5f]'} font-thai mb-2">
+            <p class="text-xs font-bold ${item.artistCategory === 'jeno' ? 'text-sky-600' : item.artistCategory === 'jaemin' ? 'text-pink-500' : 'text-[#1b3b5f]'} font-thai mb-2">
               ${item.artistLabel}
             </p>
             <p class="text-xs text-[#526f8d] font-thai line-clamp-2 leading-relaxed mb-4">
@@ -820,7 +758,7 @@ body {
               ดูรายละเอียด <i class="fa-solid fa-chevron-right text-[9px]"></i>
             </span>
 
-            <button onclick="likeWork(${item.id}, this, event)" class="like-btn relative flex items-center gap-1.5 text-xs font-bold text-rose-500 bg-rose-50 hover:bg-rose-100 px-3 py-1 rounded-xl transition-all active:scale-90 border border-rose-200">
+            <button onclick="likeWork(${item.id}, this, event)" class="like-btn relative flex items-center gap-1.5 text-xs font-bold text-pink-500 bg-pink-50 hover:bg-pink-100 px-3 py-1 rounded-xl transition-all active:scale-90 border border-pink-200">
               <i class="fa-solid fa-heart"></i>
               <span id="like-count-${item.id}">${item.likes}</span>
             </button>
@@ -852,7 +790,7 @@ body {
         if (countSpan) countSpan.textContent = item.likes;
 
         const heart = document.createElement('span');
-        heart.className = 'floating-heart fa-solid fa-heart text-rose-500 text-sm';
+        heart.className = 'floating-heart fa-solid fa-heart text-pink-500 text-sm';
         heart.style.left = `${btnElement.offsetWidth / 2 - 6}px`;
         heart.style.top = `-10px`;
         btnElement.appendChild(heart);
