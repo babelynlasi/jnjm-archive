@@ -270,20 +270,48 @@
     </header>
 
     <!-- ==============================================
-         2. CATEGORY FILTER TABS (Pastel Sky & Rose accents)
+         2. CATEGORY FILTER TABS (Minimal & Custom Balanced Hues)
+         Order: All (Purple) -> JENO (Sky/Blue) -> JAEMIN (Pink/Rose) -> JNJM (Red)
          ============================================== -->
-    <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
-      <button onclick="selectCategory('all')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white" data-cat="all">
-        ✨ ทั้งหมด (All)
+    <div class="flex flex-wrap items-center justify-center gap-2.5 pt-1">
+      <!-- 1. All Button (Purple) -->
+      <button 
+        id="btnFilterAll" 
+        onclick="selectCategory('all')" 
+        class="filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-[#7c3aed] bg-[#7c3aed] text-white" 
+        data-cat="all"
+      >
+        All
       </button>
-      <button onclick="selectCategory('duo')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-pink-200/60 bg-white/90 text-[#1b3b5f] hover:bg-pink-50" data-cat="duo">
-        ⚡ งานคู่ &amp; โมเมนต์ (JNJM Duo)
+
+      <!-- 2. JENO Button (Blue) -->
+      <button 
+        id="btnFilterJeno" 
+        onclick="selectCategory('jeno')" 
+        class="filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-white/90 bg-white text-[#0284c7] hover:border-[#0284c7]/40" 
+        data-cat="jeno"
+      >
+        JENO
       </button>
-      <button onclick="selectCategory('jeno')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-sky-200/60 bg-white/90 text-[#1b3b5f] hover:bg-sky-50" data-cat="jeno">
-        🐶 งานเดี่ยว JENO
+
+      <!-- 3. JAEMIN Button (Pink) -->
+      <button 
+        id="btnFilterJaemin" 
+        onclick="selectCategory('jaemin')" 
+        class="filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-white/90 bg-white text-[#db2777] hover:border-[#db2777]/40" 
+        data-cat="jaemin"
+      >
+        JAEMIN
       </button>
-      <button onclick="selectCategory('jaemin')" class="filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-pink-200/60 bg-white/90 text-[#1b3b5f] hover:bg-pink-50" data-cat="jaemin">
-        🐰 งานเดี่ยว JAEMIN
+
+      <!-- 4. JNJM Button (Red - Moved to last) -->
+      <button 
+        id="btnFilterDuo" 
+        onclick="selectCategory('duo')" 
+        class="filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-white/90 bg-white text-[#dc2626] hover:border-[#dc2626]/40" 
+        data-cat="duo"
+      >
+        JNJM
       </button>
     </div>
 
@@ -668,15 +696,36 @@
       }
     }
 
-    // Function to select category for works
+    // Color definitions for each filter button
+    const filterStyles = {
+      all: {
+        active: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-[#7c3aed] bg-[#7c3aed] text-white",
+        inactive: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-white/90 bg-white text-[#7c3aed] hover:border-[#7c3aed]/40"
+      },
+      jeno: {
+        active: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-[#0284c7] bg-[#0284c7] text-white",
+        inactive: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-white/90 bg-white text-[#0284c7] hover:border-[#0284c7]/40"
+      },
+      jaemin: {
+        active: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-[#db2777] bg-[#db2777] text-white",
+        inactive: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-white/90 bg-white text-[#db2777] hover:border-[#db2777]/40"
+      },
+      duo: {
+        active: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-[#dc2626] bg-[#dc2626] text-white",
+        inactive: "filter-pill-btn px-6 py-2.5 rounded-2xl text-xs sm:text-sm font-chunky font-bold tracking-wider transition-all duration-200 shadow-sm border-2 border-white/90 bg-white text-[#dc2626] hover:border-[#dc2626]/40"
+      }
+    };
+
+    // Function to select category for works with custom color states
     function selectCategory(category) {
       currentFilter = category;
 
       document.querySelectorAll('.filter-pill-btn').forEach(btn => {
-        if (btn.getAttribute('data-cat') === category) {
-          btn.className = "filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-white/80 bg-[#1b3b5f] text-white";
+        const cat = btn.getAttribute('data-cat');
+        if (cat === category) {
+          btn.className = filterStyles[cat].active;
         } else {
-          btn.className = "filter-pill-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm border border-pink-200/60 bg-white/90 text-[#1b3b5f] hover:bg-pink-50";
+          btn.className = filterStyles[cat].inactive;
         }
       });
 
